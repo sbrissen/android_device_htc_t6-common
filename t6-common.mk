@@ -161,6 +161,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.forbid_format="/firmware/mdm,/firmware/q6,/firmware/wcnss" \
     ro.cwm.forbid_mount="/firmware/mdm,/firmware/q6,/firmware/wcnss" \
     ro.opengles.version=196608 \
+    ro.input.noresample=1 \
     ro.product.wireless=WCN3660 \
     ro.qualcomm.bt.hci_transport=smd \
     ro.telephony.call_ring.multiple=false \
