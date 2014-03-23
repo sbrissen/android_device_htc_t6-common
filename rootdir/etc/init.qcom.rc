@@ -16,7 +16,7 @@ on init
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
-    export SECONDARY_STORAGE /storage/usbdisk
+    export SECONDARY_STORAGE /storage/sdcard2:/storage/usbdisk
 
     # for backwards compatibility
     symlink /storage/emulated/legacy /sdcard
@@ -425,8 +425,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-
-service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -O/data/misc/wifi/sockets \
@@ -460,10 +459,6 @@ service iprenew_p2p /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
-    disabled
-    oneshot
-
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     disabled
     oneshot
@@ -472,7 +467,6 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 # End WiFi
-
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     user root
@@ -490,8 +484,26 @@ service qcom-sh /system/bin/sh /init.qcom.sh
     class main
     user root
     oneshot
+=======
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+    user root
+    group system qcom_oncrpc
+    disabled
+    oneshot
+
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+    user bluetooth
+    group qcom_oncrpc bluetooth net_bt_admin system
+    disabled
+    oneshot
 
 # Property triggers begin here
+
+on property:bluetooth.hciattach=true
+    start hciattach
+
+on property:bluetooth.hciattach=false
+    setprop bluetooth.status off
 
 on property:bluetooth.hciattach=true
     start hciattach

@@ -59,6 +59,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:/system/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:/system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/WCNSS_qcom_cfg.ini:/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
 # Audio config
 PRODUCT_COPY_FILES += \
@@ -160,6 +161,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.forbid_format="/firmware/mdm,/firmware/q6,/firmware/wcnss" \
     ro.cwm.forbid_mount="/firmware/mdm,/firmware/q6,/firmware/wcnss" \
     ro.opengles.version=196608 \
+    ro.input.noresample=1 \
     ro.product.wireless=WCN3660 \
     ro.qualcomm.bt.hci_transport=smd \
     ro.telephony.call_ring.multiple=false \

@@ -212,6 +212,9 @@ lib/libmlplatform.so
 lib/libmpl.so
 lib/libmpl_jni.so
 
+# Touchscreen firmware
+etc/firmware/max11876.bin
+
 # Widevine
 lib/libQSEEComAPI.so
 vendor/lib/libwvm.so
@@ -219,5 +222,4 @@ vendor/lib/libWVStreamControlAPI_L1.so
 
 # WLAN firmware
 etc/firmware/wlan/prima/WCNSS_cfg.dat
-etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
