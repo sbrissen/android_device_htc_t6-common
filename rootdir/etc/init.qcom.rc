@@ -480,23 +480,6 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
 
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class main
-    user root
-    oneshot
-=======
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    user root
-    group system qcom_oncrpc
-    disabled
-    oneshot
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin system
-    disabled
-    oneshot
-
 # Property triggers begin here
 
 on property:bluetooth.hciattach=true
