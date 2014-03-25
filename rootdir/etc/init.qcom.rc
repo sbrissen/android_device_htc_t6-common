@@ -390,11 +390,6 @@ service qcom-wifi-sh /system/bin/sh /system/etc/init.qcom.wifi.sh
     user root
     oneshot
 
-service qcom-wifi-sh /system/bin/sh /system/etc/init.qcom.coex.sh
-    class main
-    user root
-    oneshot
-
 service qmuxd /system/bin/qmuxd
     class core
     user radio
