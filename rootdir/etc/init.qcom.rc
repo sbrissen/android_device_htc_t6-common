@@ -313,6 +313,8 @@ on boot
     # Change owner and group for media server and surface flinger
     chown system system /sys/devices/virtual/graphics/fb1/format_3d
     chown system system /sys/devices/virtual/graphics/fb1/hpd
+    chown system system /sys/devices/virtual/graphics/fb1/vendor_name
+    chown system system /sys/devices/virtual/graphics/fb1/product_description
 
     chown media system /sys/camera_htccallback/htccallback
     chown media system /sys/camera_attrs/videochat
@@ -379,11 +381,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet graphics
-
-service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
-    user root
-    disabled
-    oneshot
 
 service qcom-wifi-sh /system/bin/sh /system/etc/init.qcom.wifi.sh
     class main
