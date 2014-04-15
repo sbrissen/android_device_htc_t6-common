@@ -228,7 +228,8 @@ on post-fs-data
 
     # prepare kernel for wifi module
     setprop ro.product.wireless WCN3660
-    write /dev/wcnss_wlan 1
+    #write /dev/wcnss_wlan 1
+    #write /sys/module/wcnss_ssr_8960/parameters/enable_riva_ssr 1
 
     # We will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
@@ -377,6 +378,12 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     user root
     disabled
 
+service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+    user bluetooth
+    group qcom_oncrpc bluetooth net_bt_admin system
+    disabled
+    oneshot
+
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
@@ -466,11 +473,11 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     disabled
     oneshot
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin system
-    disabled
-    oneshot
+service wifi-crda /system/bin/sh /system/etc/init.crda.sh
+   class late_start
+   user root
+   disabled
+   oneshot
 
 # Property triggers begin here
 

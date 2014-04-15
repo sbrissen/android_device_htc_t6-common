@@ -45,7 +45,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
     $(LOCAL_PATH)/configs/init.qcom.fm.sh:/system/etc/init.qcom.fm.sh \
-    $(LOCAL_PATH)/configs/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh
+    $(LOCAL_PATH)/configs/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh \
+    $(LOCAL_PATH)/configs/init.crda.sh:/system/etc/init.crda.sh
 
 # QC thermald config
 PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.conf
@@ -54,7 +55,7 @@ PRODUCT_COPY_FILES += $(LOCAL_PATH)/configs/thermald.conf:system/etc/thermald.co
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:/system/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:/system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/WCNSS_qcom_cfg.ini:/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/configs/WCNSS_qcom_cfg.ini:/system/etc/wifi/WCNSS_qcom_cfg.ini
 
 # Audio config
 PRODUCT_COPY_FILES += \
@@ -116,6 +117,14 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
+# Wifi
+PRODUCT_PACKAGES += \
+    wcnss_service \
+    libwfcu \
+    conn_init \
+    WCNSS_qcom_cfg.ini \
+    WCNSS_qcom_wlan_nv.bin
+
 # Misc Packages
 PRODUCT_PACKAGES += \
     Torch
@@ -162,6 +171,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000 \
     ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
+#    ro.telephony.ril_class=HTCQualcommRIL
 
 # Set build date
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
