@@ -44,7 +44,6 @@ BOARD_USES_SEPERATED_VOICE_SPEAKER := true  # use distinct voice speaker use cas
 BOARD_USES_SEPERATED_VOIP := true  # use distinct VOIP use cases
 BOARD_AUDIO_AMPLIFIER := device/htc/t6-common/libaudioamp
 BOARD_HAVE_HTC_CSDCLIENT := true
-BOARD_HAVE_NEW_QCOM_CSDCLIENT := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -62,6 +61,7 @@ HAVE_ADRENO_SOURCE := false
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
+# COMMON_GLOBAL_CFLAGS += -DNEW_LIBRIL_HTC
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
@@ -82,7 +82,6 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/wlan/parameters/fwpath"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Filesystem
