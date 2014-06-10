@@ -45,7 +45,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
     $(LOCAL_PATH)/configs/init.qcom.fm.sh:/system/etc/init.qcom.fm.sh \
-    $(LOCAL_PATH)/configs/init.qcom.wifi.sh:/system/etc/init.qcom.wifi.sh \
     $(LOCAL_PATH)/configs/init.crda.sh:/system/etc/init.crda.sh
 
 # QC thermald config
@@ -94,7 +93,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    libaudioamp
+    libaudioamp \
+    qcom.fmradio
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -119,15 +119,12 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    wcnss_service \
-    libwfcu \
-    conn_init \
-    WCNSS_qcom_cfg.ini \
-    WCNSS_qcom_wlan_nv.bin
+    wcnss_service
 
 # Misc Packages
 PRODUCT_PACKAGES += \
     Torch
+    
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -157,7 +154,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.nfc.fw_boot_download=false \
     debug.nfc.se=true \
     ro.nfc.port=I2C \
-    ro.sf.lcd_density=480 \
+    ro.sf.lcd_density=420 \
     persist.timed.enable=true \
     persist.gps.qmienabled=true \
     ro.baseband.arch=mdm \
@@ -170,8 +167,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000 \
-    ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
-#    ro.telephony.ril_class=HTCQualcommRIL
+    ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so \
+    ro.telephony.ril_class=HTCQualcommRIL
 
 # Set build date
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
