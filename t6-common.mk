@@ -119,7 +119,8 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    wcnss_service
+    wcnss_service \
+    libwcnss_qmi
 
 # Misc Packages
 PRODUCT_PACKAGES += \
